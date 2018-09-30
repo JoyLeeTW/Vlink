@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		65FA072A2158BFAC00F9DA87 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FA07292158BFAC00F9DA87 /* AppDelegate.m */; };
-		65FA072D2158BFAC00F9DA87 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FA072C2158BFAC00F9DA87 /* ViewController.m */; };
+		65FA072D2158BFAC00F9DA87 /* AddOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FA072C2158BFAC00F9DA87 /* AddOpportunityViewController.m */; };
 		65FA07302158BFAC00F9DA87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65FA072E2158BFAC00F9DA87 /* Main.storyboard */; };
 		65FA07322158BFAE00F9DA87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65FA07312158BFAE00F9DA87 /* Assets.xcassets */; };
 		65FA07352158BFAE00F9DA87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65FA07332158BFAE00F9DA87 /* LaunchScreen.storyboard */; };
@@ -23,8 +23,8 @@
 		65FA07252158BFAC00F9DA87 /* Vlink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vlink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65FA07282158BFAC00F9DA87 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65FA07292158BFAC00F9DA87 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		65FA072B2158BFAC00F9DA87 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		65FA072C2158BFAC00F9DA87 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		65FA072B2158BFAC00F9DA87 /* AddOpportunityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddOpportunityViewController.h; sourceTree = "<group>"; };
+		65FA072C2158BFAC00F9DA87 /* AddOpportunityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddOpportunityViewController.m; sourceTree = "<group>"; };
 		65FA072F2158BFAC00F9DA87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65FA07312158BFAE00F9DA87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65FA07342158BFAE00F9DA87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -80,8 +80,8 @@
 				65FA073E2158C10900F9DA87 /* OpportunityViewController.m */,
 				65FA07282158BFAC00F9DA87 /* AppDelegate.h */,
 				65FA07292158BFAC00F9DA87 /* AppDelegate.m */,
-				65FA072B2158BFAC00F9DA87 /* ViewController.h */,
-				65FA072C2158BFAC00F9DA87 /* ViewController.m */,
+				65FA072B2158BFAC00F9DA87 /* AddOpportunityViewController.h */,
+				65FA072C2158BFAC00F9DA87 /* AddOpportunityViewController.m */,
 				65FA072E2158BFAC00F9DA87 /* Main.storyboard */,
 				65FA07312158BFAE00F9DA87 /* Assets.xcassets */,
 				65FA07332158BFAE00F9DA87 /* LaunchScreen.storyboard */,
@@ -163,7 +163,7 @@
 			files = (
 				65FA07472158C10C00F9DA87 /* OpportunityDetailViewController.m in Sources */,
 				65FA07492158C10C00F9DA87 /* OpportunityCellTableViewCell.m in Sources */,
-				65FA072D2158BFAC00F9DA87 /* ViewController.m in Sources */,
+				65FA072D2158BFAC00F9DA87 /* AddOpportunityViewController.m in Sources */,
 				65FA07482158C10C00F9DA87 /* LoginViewController.m in Sources */,
 				65FA07382158BFAE00F9DA87 /* main.m in Sources */,
 				65FA07462158C10C00F9DA87 /* OpportunityViewController.m in Sources */,

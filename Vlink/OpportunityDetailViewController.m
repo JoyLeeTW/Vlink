@@ -23,7 +23,7 @@
                                                                      action:@selector(back:)];
     [self.navigationItem setLeftBarButtonItem:backButtonItem animated:YES];
     
-    
+    // 類別的圓角
     self.categoryView.layer.cornerRadius = 10;
     self.categoryView.layer.masksToBounds = true;
     UILabel *categoryLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, _categoryView.frame.size.width, _categoryView.frame.size.height)];

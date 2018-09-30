@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AddOpportunityViewController.h
 //  Vlink
 //
 //  Created by Joy Lee on 2018/9/24.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface AddOpportunityViewController : UIViewController
 
 
 @end

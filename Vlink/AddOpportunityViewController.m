@@ -1,22 +1,23 @@
 //
-//  ViewController.m
+//  AddOpportunityViewController.m
 //  Vlink
 //
 //  Created by Joy Lee on 2018/9/24.
 //  Copyright © 2018年 Joy Lee. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "AddOpportunityViewController.h"
 
-@interface ViewController ()
+@interface AddOpportunityViewController ()
 
 @end
 
-@implementation ViewController
+@implementation AddOpportunityViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+   
 }
 
 
