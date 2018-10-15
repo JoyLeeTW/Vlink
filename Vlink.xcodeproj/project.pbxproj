@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4AC6A94AFCFF7383145F91CA /* libPods-Vlink.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE3B422B1F15733C642E173 /* libPods-Vlink.a */; };
+		652D9F9521687B22006CBC81 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 652D9F9421687B22006CBC81 /* GoogleService-Info.plist */; };
+		652D9F9821731EDE006CBC81 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 652D9F9721731EDE006CBC81 /* ProfileViewController.m */; };
+		652D9F9B217323AA006CBC81 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 652D9F9A217323AA006CBC81 /* RegisterViewController.m */; };
+		652D9F9E21738AE3006CBC81 /* UIColor+PXExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 652D9F9D21738AE3006CBC81 /* UIColor+PXExtentions.m */; };
 		65FA072A2158BFAC00F9DA87 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FA07292158BFAC00F9DA87 /* AppDelegate.m */; };
 		65FA072D2158BFAC00F9DA87 /* AddOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FA072C2158BFAC00F9DA87 /* AddOpportunityViewController.m */; };
 		65FA07302158BFAC00F9DA87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65FA072E2158BFAC00F9DA87 /* Main.storyboard */; };
@@ -20,6 +25,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		652D9F9421687B22006CBC81 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		652D9F9621731EDE006CBC81 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		652D9F9721731EDE006CBC81 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		652D9F99217323AA006CBC81 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		652D9F9A217323AA006CBC81 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		652D9F9C21738AE2006CBC81 /* UIColor+PXExtentions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PXExtentions.h"; sourceTree = "<group>"; };
+		652D9F9D21738AE3006CBC81 /* UIColor+PXExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PXExtentions.m"; sourceTree = "<group>"; };
 		65FA07252158BFAC00F9DA87 /* Vlink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vlink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65FA07282158BFAC00F9DA87 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65FA07292158BFAC00F9DA87 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -38,6 +50,9 @@
 		65FA07432158C10B00F9DA87 /* OpportunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpportunityViewController.h; sourceTree = "<group>"; };
 		65FA07442158C10B00F9DA87 /* OpportunityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpportunityDetailViewController.h; sourceTree = "<group>"; };
 		65FA07452158C10B00F9DA87 /* OpportunityCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpportunityCellTableViewCell.m; sourceTree = "<group>"; };
+		97232D66726D61D1B9A67C0F /* Pods-Vlink.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vlink.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vlink/Pods-Vlink.debug.xcconfig"; sourceTree = "<group>"; };
+		AAE3B422B1F15733C642E173 /* libPods-Vlink.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Vlink.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBFDFCAD845CC7E67B965FA2 /* Pods-Vlink.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vlink.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vlink/Pods-Vlink.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,17 +60,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AC6A94AFCFF7383145F91CA /* libPods-Vlink.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E983C4AE0AD76FC61790520 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				97232D66726D61D1B9A67C0F /* Pods-Vlink.debug.xcconfig */,
+				EBFDFCAD845CC7E67B965FA2 /* Pods-Vlink.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		65FA071C2158BFAC00F9DA87 = {
 			isa = PBXGroup;
 			children = (
 				65FA07272158BFAC00F9DA87 /* Vlink */,
 				65FA07262158BFAC00F9DA87 /* Products */,
+				2E983C4AE0AD76FC61790520 /* Pods */,
+				8BFAAEEDF0194484ECB23264 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,13 +109,28 @@
 				65FA07292158BFAC00F9DA87 /* AppDelegate.m */,
 				65FA072B2158BFAC00F9DA87 /* AddOpportunityViewController.h */,
 				65FA072C2158BFAC00F9DA87 /* AddOpportunityViewController.m */,
+				652D9F9621731EDE006CBC81 /* ProfileViewController.h */,
+				652D9F9721731EDE006CBC81 /* ProfileViewController.m */,
 				65FA072E2158BFAC00F9DA87 /* Main.storyboard */,
+				652D9F99217323AA006CBC81 /* RegisterViewController.h */,
+				652D9F9A217323AA006CBC81 /* RegisterViewController.m */,
 				65FA07312158BFAE00F9DA87 /* Assets.xcassets */,
 				65FA07332158BFAE00F9DA87 /* LaunchScreen.storyboard */,
 				65FA07362158BFAE00F9DA87 /* Info.plist */,
 				65FA07372158BFAE00F9DA87 /* main.m */,
+				652D9F9421687B22006CBC81 /* GoogleService-Info.plist */,
+				652D9F9C21738AE2006CBC81 /* UIColor+PXExtentions.h */,
+				652D9F9D21738AE3006CBC81 /* UIColor+PXExtentions.m */,
 			);
 			path = Vlink;
+			sourceTree = "<group>";
+		};
+		8BFAAEEDF0194484ECB23264 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AAE3B422B1F15733C642E173 /* libPods-Vlink.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,6 +140,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65FA073B2158BFAE00F9DA87 /* Build configuration list for PBXNativeTarget "Vlink" */;
 			buildPhases = (
+				56E6459E773AF3D7C84D2B88 /* [CP] Check Pods Manifest.lock */,
 				65FA07212158BFAC00F9DA87 /* Sources */,
 				65FA07222158BFAC00F9DA87 /* Frameworks */,
 				65FA07232158BFAC00F9DA87 /* Resources */,
@@ -149,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65FA07352158BFAE00F9DA87 /* LaunchScreen.storyboard in Resources */,
+				652D9F9521687B22006CBC81 /* GoogleService-Info.plist in Resources */,
 				65FA07322158BFAE00F9DA87 /* Assets.xcassets in Resources */,
 				65FA07302158BFAC00F9DA87 /* Main.storyboard in Resources */,
 			);
@@ -156,14 +200,38 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		56E6459E773AF3D7C84D2B88 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Vlink-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		65FA07212158BFAC00F9DA87 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				652D9F9E21738AE3006CBC81 /* UIColor+PXExtentions.m in Sources */,
 				65FA07472158C10C00F9DA87 /* OpportunityDetailViewController.m in Sources */,
 				65FA07492158C10C00F9DA87 /* OpportunityCellTableViewCell.m in Sources */,
+				652D9F9821731EDE006CBC81 /* ProfileViewController.m in Sources */,
 				65FA072D2158BFAC00F9DA87 /* AddOpportunityViewController.m in Sources */,
+				652D9F9B217323AA006CBC81 /* RegisterViewController.m in Sources */,
 				65FA07482158C10C00F9DA87 /* LoginViewController.m in Sources */,
 				65FA07382158BFAE00F9DA87 /* main.m in Sources */,
 				65FA07462158C10C00F9DA87 /* OpportunityViewController.m in Sources */,
@@ -307,6 +375,7 @@
 		};
 		65FA073C2158BFAE00F9DA87 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97232D66726D61D1B9A67C0F /* Pods-Vlink.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -324,6 +393,7 @@
 		};
 		65FA073D2158BFAE00F9DA87 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBFDFCAD845CC7E67B965FA2 /* Pods-Vlink.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

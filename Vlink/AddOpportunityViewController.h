@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddOpportunityViewController : UIViewController
+@interface AddOpportunityViewController : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource>
 
 
 @end

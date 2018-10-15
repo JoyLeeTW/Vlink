@@ -7,9 +7,10 @@
 //
 
 #import "LoginViewController.h"
+#import "UIColor+PXExtentions.h"
 
 @interface LoginViewController ()
-@property (weak, nonatomic) IBOutlet UIView *logoView;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 
 @property (weak, nonatomic) IBOutlet UIView *nameView;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -24,7 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIView *passwordLineView;
 
 @property (weak, nonatomic) IBOutlet UIButton *loginRegisterButton;
-@property (weak, nonatomic) IBOutlet UIButton *fbLoginButton;
+@property (weak, nonatomic) IBOutlet UIButton *forgetPWButton;
+@property (weak, nonatomic) IBOutlet UIButton *registerButton;
 
 @end
 
@@ -43,11 +45,20 @@
 
 #pragma mark - layout
 - (void)layout {
+    
     self.loginRegisterButton.layer.cornerRadius = 5.0f;
     self.loginRegisterButton.clipsToBounds = true;
+    self.loginRegisterButton.backgroundColor = [UIColor colorFromHexString:@"#ffdc35"];
+
     
-    self.fbLoginButton.layer.cornerRadius = 5.0f;
-    self.fbLoginButton.clipsToBounds = true;
+    self.forgetPWButton.layer.cornerRadius = 5.0f;
+    self.forgetPWButton.clipsToBounds = true;
+    self.forgetPWButton.backgroundColor = [UIColor colorFromHexString:@"#ffdc35"];
+
+    
+    self.registerButton.layer.cornerRadius = 5.0f;
+    self.registerButton.clipsToBounds = true;
+    self.registerButton.backgroundColor = [UIColor colorFromHexString:@"#ffdc35"];
 }
 
 #pragma mark - IBAction
