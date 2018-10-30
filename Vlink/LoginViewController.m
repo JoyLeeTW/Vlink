@@ -8,16 +8,16 @@
 
 #import "LoginViewController.h"
 #import "UIColor+PXExtentions.h"
-
+@import Firebase;
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
-
+/*
 @property (weak, nonatomic) IBOutlet UIView *nameView;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UIView *nameLineView;
-
+*/
 @property (weak, nonatomic) IBOutlet UIView *emailView;
-@property (weak, nonatomic) IBOutlet UITextField *emailLabel;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UIView *emailLineView;
 
 @property (weak, nonatomic) IBOutlet UIView *passwordView;
@@ -45,6 +45,9 @@
 
 #pragma mark - layout
 - (void)layout {
+    self.emailTextField.placeholder = @"Email";
+    self.passwordTextView.placeholder = @"Password";
+    [self.passwordTextView setSecureTextEntry:YES];
     
     self.loginRegisterButton.layer.cornerRadius = 5.0f;
     self.loginRegisterButton.clipsToBounds = true;
@@ -64,6 +67,29 @@
 #pragma mark - IBAction
 
 - (IBAction)pressLoginButton:(id)sender {
+    [[FIRAuth auth] signInWithEmail:self.emailTextField.text
+                           password:self.passwordTextView.text
+                         completion:^(FIRAuthDataResult * _Nullable authResult,
+                                      NSError * _Nullable error) {
+                             NSLog(@"***** authResult [%@] error [%@] *****", authResult, error);
+                             if(error){
+                                 switch(error.code){
+                                     case 17009:
+                                         // 密碼錯
+                                         break;
+                                     case 17011:
+                                         // 沒這個帳號
+                                         break;
+                                 }
+                             }else{
+                                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                 UITabBarController *tabVC = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"tab"];
+                                 [self presentViewController:tabVC animated:YES completion:^{
+                                     
+                                 }];
+                             }
+                             
+                         }];
 }
 
 

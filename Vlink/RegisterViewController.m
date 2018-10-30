@@ -8,7 +8,7 @@
 
 #import "RegisterViewController.h"
 #import "UIColor+PXExtentions.h"
-
+@import Firebase;
 @interface RegisterViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
@@ -24,7 +24,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [self buildLayout];
+
+}
+
+#pragma marks - build Layout
+
+-(void) buildLayout{
     self.registerButton.backgroundColor = [UIColor colorFromHexString:@"#ffdc35"];
     self.registerButton.layer.cornerRadius = 5.0f;
     self.registerButton.clipsToBounds = true;
@@ -34,9 +40,15 @@
     self.backButton.clipsToBounds = true;
     
     [self setTextField:self.nameTextField];
+    self.nameTextField.placeholder = @"Name";
     [self setTextField:self.emailTextField];
+    self.emailTextField.placeholder = @"Email";
     [self setTextField:self.passwordTextField];
+    self.passwordTextField.placeholder = @"password";
+    [self.passwordTextField setSecureTextEntry:YES];
     [self setTextField:self.checkPwTextField];
+    self.checkPwTextField.placeholder = @"Enter password again";
+    [self.checkPwTextField setSecureTextEntry:YES];
 }
 
 - (void) setTextField:(UITextField *)textField{
@@ -46,8 +58,23 @@
     textField.layer.borderWidth = 1.0f;
 }
 
+#pragma marks - IBAction
+
 - (IBAction)backToLogin:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)signUp:(id)sender {
+    if([self.passwordTextField.text isEqualToString:self.checkPwTextField.text]){
+        [[FIRAuth auth] createUserWithEmail:self.emailTextField.text
+                                   password:self.passwordTextField.text
+                                 completion:^(FIRAuthDataResult * _Nullable authResult,NSError * _Nullable error) {
+                                      [self dismissViewControllerAnimated:YES completion:nil];
+                                 }];
+    }else{
+        // alert
+    }
+    
 }
 
 @end
