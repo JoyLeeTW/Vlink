@@ -10,6 +10,15 @@
 #import "UIColor+PXExtentions.h"
 
 @interface OpportunityDetailViewController ()
+@property (weak, nonatomic) IBOutlet UIView *categoryView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *organizationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *starTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *positionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *remainingLabel;
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 @property (weak, nonatomic) IBOutlet UIButton *joinButton;
 @end
 
@@ -17,12 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Opportunity"
-                                                                      style:UIBarButtonItemStylePlain
-                                                                     target:self
-                                                                     action:@selector(back:)];
-    [self.navigationItem setLeftBarButtonItem:backButtonItem animated:YES];
     
     // 類別的圓角
     self.categoryView.layer.cornerRadius = 10;
@@ -32,12 +35,11 @@
     categoryLabel.textAlignment = NSTextAlignmentCenter;
     [self.categoryView addSubview:categoryLabel];
     self.categoryView.backgroundColor = [UIColor colorFromHexString:@"#ffdc35"];
-//    self.categoryView.layer.borderWidth = 1;
-//    self.categoryView.layer.borderColor = [[UIColor blackColor]CGColor];
     
     [self setLabel:self.titleLabel];
     [self setLabel:self.organizationLabel];
-    [self setLabel:self.timeLabel];
+    [self setLabel:self.starTimeLabel];
+    [self setLabel:self.endTimeLabel];
     [self setLabel:self.positionLabel];
     [self setLabel:self.amountLabel];
     [self setLabel:self.remainingLabel];
@@ -49,8 +51,15 @@
     self.joinButton.backgroundColor = [UIColor colorFromHexString:@"#ffdc35"];
     self.joinButton.layer.cornerRadius = 10.0f;
     self.joinButton.layer.masksToBounds = YES;
-//    self.joinButton.layer.borderWidth = 1;
-//    self.joinButton.layer.borderColor = [[UIColor blackColor]CGColor];
+
+    self.titleLabel.text = self.oppo.title;
+    self.organizationLabel.text = self.oppo.organization;
+    self.starTimeLabel.text = self.oppo.startTime;
+    self.endTimeLabel.text = self.oppo.endTime;
+    self.positionLabel.text = self.oppo.location;
+    self.amountLabel.text = [NSString stringWithFormat:@"活動人數：%@", self.oppo.amount];
+    self.remainingLabel.text = [NSString stringWithFormat:@"需求人數:%@", self.oppo.remaining];
+    self.contentTextView.text = self.oppo.introduction;
 }
 
 - (void)didReceiveMemoryWarning {

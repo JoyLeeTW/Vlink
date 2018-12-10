@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Opportunity.h"
 
 @interface OpportunityViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-
 @property (weak, nonatomic) IBOutlet UITableView *OpportunitytableView;
-
 @end
 

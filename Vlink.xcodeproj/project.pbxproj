@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		651CB78C21BCF7540081D926 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 651CB78B21BCF7540081D926 /* Assets.xcassets */; };
 		652D9F9821731EDE006CBC81 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 652D9F9721731EDE006CBC81 /* ProfileViewController.m */; };
 		652D9F9B217323AA006CBC81 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 652D9F9A217323AA006CBC81 /* RegisterViewController.m */; };
 		652D9F9E21738AE3006CBC81 /* UIColor+PXExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 652D9F9D21738AE3006CBC81 /* UIColor+PXExtentions.m */; };
+		655AB1FB21AE7525001D7683 /* Opportunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 655AB1FA21AE7524001D7683 /* Opportunity.m */; };
 		656EE3B8217F6B9F008767C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 656EE3B7217F6B9F008767C0 /* GoogleService-Info.plist */; };
 		65FA072A2158BFAC00F9DA87 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FA07292158BFAC00F9DA87 /* AppDelegate.m */; };
 		65FA072D2158BFAC00F9DA87 /* AddOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FA072C2158BFAC00F9DA87 /* AddOpportunityViewController.m */; };
 		65FA07302158BFAC00F9DA87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65FA072E2158BFAC00F9DA87 /* Main.storyboard */; };
-		65FA07322158BFAE00F9DA87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65FA07312158BFAE00F9DA87 /* Assets.xcassets */; };
 		65FA07352158BFAE00F9DA87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65FA07332158BFAE00F9DA87 /* LaunchScreen.storyboard */; };
 		65FA07382158BFAE00F9DA87 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FA07372158BFAE00F9DA87 /* main.m */; };
 		65FA07462158C10C00F9DA87 /* OpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FA073E2158C10900F9DA87 /* OpportunityViewController.m */; };
@@ -25,12 +26,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		651CB78B21BCF7540081D926 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		652D9F9621731EDE006CBC81 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		652D9F9721731EDE006CBC81 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		652D9F99217323AA006CBC81 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		652D9F9A217323AA006CBC81 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		652D9F9C21738AE2006CBC81 /* UIColor+PXExtentions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PXExtentions.h"; sourceTree = "<group>"; };
 		652D9F9D21738AE3006CBC81 /* UIColor+PXExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PXExtentions.m"; sourceTree = "<group>"; };
+		655AB1F921AE7524001D7683 /* Opportunity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Opportunity.h; sourceTree = "<group>"; };
+		655AB1FA21AE7524001D7683 /* Opportunity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Opportunity.m; sourceTree = "<group>"; };
 		656EE3B7217F6B9F008767C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		65FA07252158BFAC00F9DA87 /* Vlink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vlink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65FA07282158BFAC00F9DA87 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -38,7 +42,6 @@
 		65FA072B2158BFAC00F9DA87 /* AddOpportunityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddOpportunityViewController.h; sourceTree = "<group>"; };
 		65FA072C2158BFAC00F9DA87 /* AddOpportunityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddOpportunityViewController.m; sourceTree = "<group>"; };
 		65FA072F2158BFAC00F9DA87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		65FA07312158BFAE00F9DA87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65FA07342158BFAE00F9DA87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65FA07362158BFAE00F9DA87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65FA07372158BFAE00F9DA87 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -105,6 +108,8 @@
 				65FA07412158C10A00F9DA87 /* OpportunityDetailViewController.m */,
 				65FA07432158C10B00F9DA87 /* OpportunityViewController.h */,
 				65FA073E2158C10900F9DA87 /* OpportunityViewController.m */,
+				655AB1F921AE7524001D7683 /* Opportunity.h */,
+				655AB1FA21AE7524001D7683 /* Opportunity.m */,
 				65FA07282158BFAC00F9DA87 /* AppDelegate.h */,
 				65FA07292158BFAC00F9DA87 /* AppDelegate.m */,
 				65FA072B2158BFAC00F9DA87 /* AddOpportunityViewController.h */,
@@ -114,13 +119,13 @@
 				65FA072E2158BFAC00F9DA87 /* Main.storyboard */,
 				652D9F99217323AA006CBC81 /* RegisterViewController.h */,
 				652D9F9A217323AA006CBC81 /* RegisterViewController.m */,
-				65FA07312158BFAE00F9DA87 /* Assets.xcassets */,
 				65FA07332158BFAE00F9DA87 /* LaunchScreen.storyboard */,
 				65FA07362158BFAE00F9DA87 /* Info.plist */,
 				65FA07372158BFAE00F9DA87 /* main.m */,
 				652D9F9C21738AE2006CBC81 /* UIColor+PXExtentions.h */,
 				652D9F9D21738AE3006CBC81 /* UIColor+PXExtentions.m */,
 				656EE3B7217F6B9F008767C0 /* GoogleService-Info.plist */,
+				651CB78B21BCF7540081D926 /* Assets.xcassets */,
 			);
 			path = Vlink;
 			sourceTree = "<group>";
@@ -193,7 +198,7 @@
 			files = (
 				65FA07352158BFAE00F9DA87 /* LaunchScreen.storyboard in Resources */,
 				656EE3B8217F6B9F008767C0 /* GoogleService-Info.plist in Resources */,
-				65FA07322158BFAE00F9DA87 /* Assets.xcassets in Resources */,
+				651CB78C21BCF7540081D926 /* Assets.xcassets in Resources */,
 				65FA07302158BFAC00F9DA87 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +233,7 @@
 			files = (
 				652D9F9E21738AE3006CBC81 /* UIColor+PXExtentions.m in Sources */,
 				65FA07472158C10C00F9DA87 /* OpportunityDetailViewController.m in Sources */,
+				655AB1FB21AE7525001D7683 /* Opportunity.m in Sources */,
 				65FA07492158C10C00F9DA87 /* OpportunityCellTableViewCell.m in Sources */,
 				652D9F9821731EDE006CBC81 /* ProfileViewController.m in Sources */,
 				65FA072D2158BFAC00F9DA87 /* AddOpportunityViewController.m in Sources */,
@@ -312,7 +318,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -365,7 +371,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

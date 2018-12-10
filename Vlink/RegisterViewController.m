@@ -9,7 +9,7 @@
 #import "RegisterViewController.h"
 #import "UIColor+PXExtentions.h"
 @import Firebase;
-@interface RegisterViewController ()
+@interface RegisterViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -17,13 +17,21 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *checkPwTextField;
 
+@property (strong, nonatomic) FIRDatabaseReference *ref;
 @end
 
 @implementation RegisterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.ref = [[FIRDatabase database] reference];
+    
+    self.nameTextField.delegate = self;
+    self.emailTextField.delegate = self;
+    self.passwordTextField.delegate = self;
+    self.checkPwTextField.delegate = self;
+    
     [self buildLayout];
 
 }
@@ -69,12 +77,25 @@
         [[FIRAuth auth] createUserWithEmail:self.emailTextField.text
                                    password:self.passwordTextField.text
                                  completion:^(FIRAuthDataResult * _Nullable authResult,NSError * _Nullable error) {
-                                      [self dismissViewControllerAnimated:YES completion:nil];
+                                     NSString *userID = [FIRAuth auth].currentUser.uid;
+                                     [[[[self.ref child:@"userData"] child:userID] child:@"name"] setValue:self.nameTextField.text];
+                                     [[[[self.ref child:@"userData"] child:userID] child:@"email"] setValue:self.emailTextField.text];
+                                     [[[[self.ref child:@"userData"] child:userID] child:@"type"] setValue:@"1"];
+                                     [self dismissViewControllerAnimated:YES completion:nil];
                                  }];
     }else{
         // alert
     }
     
 }
+
+
+# pragma marks - UItextField
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 
 @end

@@ -6,16 +6,10 @@
 //  Copyright © 2018年 Joy Lee. All rights reserved.
 //
 
+
 #import <UIKit/UIKit.h>
+#import "Opportunity.h"
 
 @interface OpportunityDetailViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIView *categoryView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *organizationLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *positionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *remainingLabel;
-@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
-
+@property (nonatomic, strong) Opportunity *oppo;
 @end
