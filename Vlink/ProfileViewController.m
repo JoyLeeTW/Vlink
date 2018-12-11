@@ -9,6 +9,7 @@
 #import "ProfileViewController.h"
 #import "UIColor+PXExtentions.h"
 #import "LoginViewController.h"
+#import "WebViewController.h"
 @import Firebase;
 
 //typedef NS_ENUM(NSUInteger, UICATEGORYTYPE){
@@ -68,6 +69,17 @@
 }
 
 #pragma mark - IBAction
+
+- (IBAction)takeForm:(id)sender {
+    NSString *userID = [FIRAuth auth].currentUser.uid;
+    
+    // 開問卷
+    WebViewController *formWebViewController = [[WebViewController alloc] init];
+    formWebViewController.navigationBarTitle = @"人格特質問卷";
+    formWebViewController.urlString = @"https://docs.google.com/forms/d/e/1FAIpQLSdXPWlzDuehJaRispEujtTa8GTDCPoV1lPHsy7cKxgLmIRyUQ/viewform";
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:formWebViewController];[self presentViewController:navVC animated:YES completion:^{}];
+}
+
 - (IBAction)logout:(id)sender {
     NSError *signOutError;
     BOOL status = [[FIRAuth auth] signOut:&signOutError];

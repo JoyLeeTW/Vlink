@@ -8,6 +8,8 @@
 
 #import "RegisterViewController.h"
 #import "UIColor+PXExtentions.h"
+#import "WebViewController.h"
+
 @import Firebase;
 @interface RegisterViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
@@ -112,10 +114,15 @@
                                      NSString *userID = [FIRAuth auth].currentUser.uid;
                                      [[[[self.ref child:@"userData"] child:userID] child:@"name"] setValue:self.nameTextField.text];
                                      [[[[self.ref child:@"userData"] child:userID] child:@"email"] setValue:self.emailTextField.text];
-                                     [self dismissViewControllerAnimated:YES completion:nil];
+        
+                                     // 開問卷
+                                     WebViewController *formWebViewController = [[WebViewController alloc] init];
+                                     formWebViewController.navigationBarTitle = @"人格特質問卷";
+                                     formWebViewController.urlString = @"https://docs.google.com/forms/d/e/1FAIpQLSdXPWlzDuehJaRispEujtTa8GTDCPoV1lPHsy7cKxgLmIRyUQ/viewform";
+                                     formWebViewController.isDismissTwoVC = YES;
+                                     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:formWebViewController];[self presentViewController:navVC animated:YES completion:^{}];
                                  }];
     }
-    
 }
 
 - (BOOL)checkIsEmpty:(NSString *)password {

@@ -13,6 +13,7 @@
 		652D9F9E21738AE3006CBC81 /* UIColor+PXExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 652D9F9D21738AE3006CBC81 /* UIColor+PXExtentions.m */; };
 		655AB1FB21AE7525001D7683 /* Opportunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 655AB1FA21AE7524001D7683 /* Opportunity.m */; };
 		656EE3B8217F6B9F008767C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 656EE3B7217F6B9F008767C0 /* GoogleService-Info.plist */; };
+		65B5B32721BF8AFB00F91248 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B5B32621BF8AFB00F91248 /* WebViewController.m */; };
 		65FA072A2158BFAC00F9DA87 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FA07292158BFAC00F9DA87 /* AppDelegate.m */; };
 		65FA072D2158BFAC00F9DA87 /* AddOpportunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FA072C2158BFAC00F9DA87 /* AddOpportunityViewController.m */; };
 		65FA07302158BFAC00F9DA87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65FA072E2158BFAC00F9DA87 /* Main.storyboard */; };
@@ -36,6 +37,8 @@
 		655AB1F921AE7524001D7683 /* Opportunity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Opportunity.h; sourceTree = "<group>"; };
 		655AB1FA21AE7524001D7683 /* Opportunity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Opportunity.m; sourceTree = "<group>"; };
 		656EE3B7217F6B9F008767C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		65B5B32521BF8AFB00F91248 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		65B5B32621BF8AFB00F91248 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		65FA07252158BFAC00F9DA87 /* Vlink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vlink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65FA07282158BFAC00F9DA87 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65FA07292158BFAC00F9DA87 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -119,6 +122,8 @@
 				65FA072E2158BFAC00F9DA87 /* Main.storyboard */,
 				652D9F99217323AA006CBC81 /* RegisterViewController.h */,
 				652D9F9A217323AA006CBC81 /* RegisterViewController.m */,
+				65B5B32521BF8AFB00F91248 /* WebViewController.h */,
+				65B5B32621BF8AFB00F91248 /* WebViewController.m */,
 				65FA07332158BFAE00F9DA87 /* LaunchScreen.storyboard */,
 				65FA07362158BFAE00F9DA87 /* Info.plist */,
 				65FA07372158BFAE00F9DA87 /* main.m */,
@@ -238,6 +243,7 @@
 				652D9F9821731EDE006CBC81 /* ProfileViewController.m in Sources */,
 				65FA072D2158BFAC00F9DA87 /* AddOpportunityViewController.m in Sources */,
 				652D9F9B217323AA006CBC81 /* RegisterViewController.m in Sources */,
+				65B5B32721BF8AFB00F91248 /* WebViewController.m in Sources */,
 				65FA07482158C10C00F9DA87 /* LoginViewController.m in Sources */,
 				65FA07382158BFAE00F9DA87 /* main.m in Sources */,
 				65FA07462158C10C00F9DA87 /* OpportunityViewController.m in Sources */,
