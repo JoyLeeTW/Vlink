@@ -73,20 +73,62 @@
 }
 
 - (IBAction)signUp:(id)sender {
-    if([self.passwordTextField.text isEqualToString:self.checkPwTextField.text]){
+    NSString *mail = self.emailTextField.text;
+    NSString *name = self.nameTextField.text;
+    NSString *password = self.passwordTextField.text;
+    if([self checkIsEmpty:mail]){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Email不得為空" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }else if([self checkIsEmpty:name]){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"顯示名稱不得為空" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }else if([self checkIsEmpty:password]){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"密碼不得為空" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }else if([self checkPasswordStyle:password]){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"密碼須為英數字6~10碼" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        self.passwordTextField.text = @"";
+        self.checkPwTextField.text = @"";
+    }else if(![password isEqualToString:self.checkPwTextField.text]){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"密碼不一致" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        self.passwordTextField.text = @"";
+        self.checkPwTextField.text = @"";
+    }else{
         [[FIRAuth auth] createUserWithEmail:self.emailTextField.text
                                    password:self.passwordTextField.text
                                  completion:^(FIRAuthDataResult * _Nullable authResult,NSError * _Nullable error) {
                                      NSString *userID = [FIRAuth auth].currentUser.uid;
                                      [[[[self.ref child:@"userData"] child:userID] child:@"name"] setValue:self.nameTextField.text];
                                      [[[[self.ref child:@"userData"] child:userID] child:@"email"] setValue:self.emailTextField.text];
-                                     [[[[self.ref child:@"userData"] child:userID] child:@"type"] setValue:@"1"];
                                      [self dismissViewControllerAnimated:YES completion:nil];
                                  }];
-    }else{
-        // alert
     }
     
+}
+
+- (BOOL)checkIsEmpty:(NSString *)password {
+    return !(password && password.length);
+}
+
+- (BOOL)checkPasswordStyle:(NSString *)password {
+    NSString *regEx = @"[a-zA-Z0-9]{6,10}$";
+    NSPredicate *card = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regEx];
+    if([card evaluateWithObject:password]){
+        return NO;
+    }
+    return YES;
 }
 
 
