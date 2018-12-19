@@ -8,6 +8,7 @@
 
 #import "OpportunityDetailViewController.h"
 #import "UIColor+PXExtentions.h"
+#import "OpportunityViewController.h"
 
 @interface OpportunityDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIView *categoryView;
@@ -26,12 +27,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.topItem.title = @"Vlink";
     
     // 類別的圓角
     self.categoryView.layer.cornerRadius = 10;
     self.categoryView.layer.masksToBounds = true;
     UILabel *categoryLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, _categoryView.frame.size.width, _categoryView.frame.size.height)];
-    categoryLabel.text = @"戶外陪伴類";
+    switch (self.oppo.type) {
+        case 0:
+            categoryLabel.text = @"戶外活動類";
+            break;
+        case 1:
+            categoryLabel.text = @"關懷陪伴類";
+            break;
+        case 2:
+            categoryLabel.text = @"行政/藝術類";
+            break;
+        case 3:
+            categoryLabel.text = @"綠色環保類";
+            break;
+    }
     categoryLabel.textAlignment = NSTextAlignmentCenter;
     [self.categoryView addSubview:categoryLabel];
     self.categoryView.backgroundColor = [UIColor colorFromHexString:@"#ffdc35"];
@@ -58,7 +73,7 @@
     self.endTimeLabel.text = self.oppo.endTime;
     self.positionLabel.text = self.oppo.location;
     self.amountLabel.text = [NSString stringWithFormat:@"活動人數：%@", self.oppo.amount];
-    self.remainingLabel.text = [NSString stringWithFormat:@"需求人數:%@", self.oppo.remaining];
+    self.remainingLabel.text = [NSString stringWithFormat:@"需求人數：%@", self.oppo.remaining];
     self.contentTextView.text = self.oppo.introduction;
 }
 
@@ -76,11 +91,21 @@
 #pragma mark - IBAction
 
 - (IBAction)apply:(id)sender {
+    self.joinButton.backgroundColor = [UIColor colorFromHexString:@"#ff7735"];
+    self.joinButton.titleLabel.text = @"已參加";
     
+    int amout = [self.oppo.remaining intValue];
+    NSString *remaining = [NSString stringWithFormat:@"%ld", (long)amout-1];
+    NSLog(@"***** ref [%@] oppoID [%@] *****", self.ref, self.oppo.oppo_id);
+    [[[self.ref child:self.oppo.oppo_id] child:@"remaining"] setValue:remaining];
+    self.remainingLabel.text = [NSString stringWithFormat:@"活動人數：%@", remaining];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+- (void)back {
+    NSLog(@"***** self.navigationController.viewControllers [%@] *****", self.navigationController.viewControllers);
+        [self.navigationController popViewControllerAnimated:YES];
 }
 
 

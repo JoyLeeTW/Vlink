@@ -8,7 +8,9 @@
 
 #import "LoginViewController.h"
 #import "UIColor+PXExtentions.h"
+#import "RegisterViewController.h"
 @import Firebase;
+
 @interface LoginViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 @property (weak, nonatomic) IBOutlet UIView *emailView;
@@ -38,11 +40,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    self.emailTextField.text = @"moom913@gmail.com";
-    self.passwordTextField.text = @"qqqqqq";
-    
-}
 
 #pragma mark - layout
 - (void)layout {
@@ -121,6 +118,11 @@
                          }];
 }
 
+- (IBAction)goRegister:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"registerVC"];
+    [self presentViewController:vc animated:YES completion:^{}];
+}
 
 # pragma marks - UItextField
 

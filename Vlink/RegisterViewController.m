@@ -22,7 +22,9 @@
 @property (strong, nonatomic) FIRDatabaseReference *ref;
 @end
 
-@implementation RegisterViewController
+@implementation RegisterViewController{
+    BOOL islogin;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,7 +37,14 @@
     self.checkPwTextField.delegate = self;
     
     [self buildLayout];
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    if(islogin){
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UITabBarController *tabVC = (UITabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"tab"];
+        [self presentViewController:tabVC animated:YES completion:^{}];
+    }
 }
 
 #pragma marks - build Layout
@@ -50,14 +59,10 @@
     self.backButton.clipsToBounds = true;
     
     [self setTextField:self.nameTextField];
-    self.nameTextField.placeholder = @"Name";
     [self setTextField:self.emailTextField];
-    self.emailTextField.placeholder = @"Email";
     [self setTextField:self.passwordTextField];
-    self.passwordTextField.placeholder = @"password";
     [self.passwordTextField setSecureTextEntry:YES];
     [self setTextField:self.checkPwTextField];
-    self.checkPwTextField.placeholder = @"Enter password again";
     [self.checkPwTextField setSecureTextEntry:YES];
 }
 
@@ -111,17 +116,24 @@
         [[FIRAuth auth] createUserWithEmail:self.emailTextField.text
                                    password:self.passwordTextField.text
                                  completion:^(FIRAuthDataResult * _Nullable authResult,NSError * _Nullable error) {
+                                     NSLog(@"***** [FIRAuth auth].currentUser [%@] ****",[FIRAuth auth].currentUser);
                                      NSString *userID = [FIRAuth auth].currentUser.uid;
                                      [[[[self.ref child:@"userData"] child:userID] child:@"name"] setValue:self.nameTextField.text];
                                      [[[[self.ref child:@"userData"] child:userID] child:@"email"] setValue:self.emailTextField.text];
-        
+                                     [[[[self.ref child:@"userData"] child:userID] child:@"type"] setValue:@"1"];
+                                     self->islogin = YES;
+                                     
                                      // 開問卷
                                      WebViewController *formWebViewController = [[WebViewController alloc] init];
                                      formWebViewController.navigationBarTitle = @"人格特質問卷";
-                                     formWebViewController.urlString = @"https://docs.google.com/forms/d/e/1FAIpQLSdXPWlzDuehJaRispEujtTa8GTDCPoV1lPHsy7cKxgLmIRyUQ/viewform";
-                                     formWebViewController.isDismissTwoVC = YES;
-                                     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:formWebViewController];[self presentViewController:navVC animated:YES completion:^{}];
+                                     NSString *urlString = [NSString stringWithFormat:@"https://docs.google.com/forms/d/e/1FAIpQLSdXPWlzDuehJaRispEujtTa8GTDCPoV1lPHsy7cKxgLmIRyUQ/viewform?usp=pp_url&entry.1672938002=%@",userID];
+                                     formWebViewController.urlString = urlString;
+                                     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:formWebViewController];
+                                     
+                                     [self presentViewController:navVC animated:YES completion:^{}];
+                                     
                                  }];
+        
     }
 }
 

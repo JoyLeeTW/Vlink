@@ -11,5 +11,7 @@
 
 @interface OpportunityViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *OpportunitytableView;
+
+- (void)loadDataFromDB:(void(^)(void))completionHandler;
 @end
 

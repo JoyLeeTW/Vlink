@@ -21,10 +21,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *detailContentTextView;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 
-//@property (nonatomic, strong) NSString *categoryType;
-//@property (nonatomic, strong) NSString *startTimeString;
-//@property (nonatomic, strong) NSString *endTimeString;
-
 @property (strong, nonatomic) FIRDatabaseReference *ref;
 @end
 
@@ -39,9 +35,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[UITabBarItem appearance]setTitleTextAttributes:@{@"NSForegroundColorAttributeName": [UIColor blueColor]} forState:UIControlStateNormal] ;
+    
     self.ref = [[[FIRDatabase database] reference] child:@"opportunity"];
     
-    categoryPickerArray = @[@"戶外活動類", @"關懷陪伴類", @"綠色環保類", @"行政/藝術類"];
+    categoryPickerArray = @[@"戶外活動類", @"關懷陪伴類", @"行政/藝術類", @"綠色環保類"];
     yearArray = @[@"2018", @"2019", @"2020"];
     monthArray = @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"11", @"12"];
     dateArray = @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"11", @"12", @"13", @"14", @"15", @"16", @"17", @"18", @"19", @"20",@"21", @"22", @"23", @"24", @"25", @"26", @"27", @"28", @"29", @"30", @"31"];
@@ -76,18 +75,6 @@
     self.detailContentTextView.backgroundColor = [UIColor colorFromHexString:@"#fff4c2"];
     self.detailContentTextView.text = @"簡述一下工作內容吧～";
     
-    
-    ///
-//    [[[_ref child:@"users"] child:userID] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-//        // Get user value
-//
-//        //User *user = [[User alloc] initWithUsername:snapshot.value[@"username"]];
-//
-//        // ...
-//    } withCancelBlock:^(NSError * _Nonnull error) {
-//        NSLog(@"%@", error.localizedDescription);
-//    }];
-    
 }
 
 
@@ -109,13 +96,6 @@
     NSDate *starDate = [dateFormat dateFromString:startDateString];
     NSString *timestamp = [NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970]];
     NSLog(@"starDate [%@] > [%@] > [%@]", startDateString, starDate, timestamp);
-    /*
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"YYYY-MM-dd HH:mm"];
-    NSString *dateString = [formatter stringFromDate:date];
-    NSLog(@"dateString [%@]", dateString);
-     */
     NSString *endDate = [NSString stringWithFormat:@"%@%02d%02d %@:%@:00"
                            ,[self.endTimePickerView.delegate pickerView:self.endTimePickerView titleForRow:[self.endTimePickerView selectedRowInComponent:0] forComponent:0]
                            ,[[self.endTimePickerView.delegate pickerView:self.endTimePickerView titleForRow:[self.endTimePickerView selectedRowInComponent:1] forComponent:1] intValue]
@@ -123,9 +103,6 @@
                            ,[self.endTimePickerView.delegate pickerView:self.endTimePickerView titleForRow:[self.endTimePickerView selectedRowInComponent:3] forComponent:3]
                            ,[self.endTimePickerView.delegate pickerView:self.endTimePickerView titleForRow:[self.endTimePickerView selectedRowInComponent:4] forComponent:4]];
     
-    NSLog(@"category [%@]", category);
-    NSLog(@"startView [%@]", startDateString);
-    NSLog(@"endDate [%@]", endDate);
     // if(所有值都不為空)
     FIRDatabaseReference *autoIdRef = [self.ref childByAutoId];
     [[[self.ref child:autoIdRef.key] child:@"type"] setValue:category];
@@ -353,35 +330,6 @@
     }
     return titleLabel;
 }
-
-//- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-//    switch (pickerView.tag) {
-//        case 1:{
-//            if(!self.categoryType){
-//                self.categoryType = [[NSString alloc]init];
-//            }
-//            self.categoryType = [NSString stringWithFormat:@"%d", row+1];
-//            break;
-//        }
-//        case 2:{
-//            if(!self.startTimeString){
-//                self.startTimeString = [[NSString alloc] init];
-//            }
-//            break;
-//        }
-//        case 3:{
-//            if(!self.endTimeString){
-//                self.endTimeString = [[NSString alloc] init];
-//            }
-//            break;
-//        }
-//        default:
-//            break;
-//    }
-//    self.startTimeString = @"";
-//
-//    return;
-//}
 
 
 @end

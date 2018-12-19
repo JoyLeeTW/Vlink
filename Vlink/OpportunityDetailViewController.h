@@ -9,7 +9,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Opportunity.h"
+@import Firebase;
 
 @interface OpportunityDetailViewController : UIViewController
+
 @property (nonatomic, strong) Opportunity *oppo;
+@property (nonatomic, strong) FIRDatabaseReference *ref;
+
 @end

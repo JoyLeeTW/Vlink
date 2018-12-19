@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, OPPORTUNITYTYPE) {
-    OPPORTUNITYTYPE_OUT_COM = 0,    // 戶外陪伴類
-    OPPORTUNITYTYPE_IN_COM,         // 室內陪伴類
-    OPPORTUNITYTYPE_OUT_ALN,        // 戶外幫助類
-    OPPORTUNITYTYPE_IN_ALN          // 室內幫助類
+    OPPORTUNITYTYPE_OUT_COM = 0,    // 戶外活動類
+    OPPORTUNITYTYPE_IN_COM,         // 關懷陪伴類
+    OPPORTUNITYTYPE_OUT_ALN,        // 行政/藝術類
+    OPPORTUNITYTYPE_IN_ALN          // 綠色環保類 
 };
 
 @interface Opportunity : NSObject
@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger, OPPORTUNITYTYPE) {
 @property (nonatomic, strong) NSString *remaining;
 @property (nonatomic) OPPORTUNITYTYPE type;
 @property (nonatomic, strong) NSString *introduction;
+@property (nonatomic, strong) NSString *oppo_id;
 
-+ (Opportunity *)setWithTitle:(NSString *)title organization:(NSString *)organization startTime:(NSString *)startTime endTime:(NSString *)endTime location:(NSString *)location amount:(NSString *)amount remaining:(NSString *)remaining type:(OPPORTUNITYTYPE)type introduction:(NSString *)introduction;
++ (Opportunity *)setWithTitle:(NSString *)title organization:(NSString *)organization startTime:(NSString *)startTime endTime:(NSString *)endTime location:(NSString *)location amount:(NSString *)amount remaining:(NSString *)remaining type:(OPPORTUNITYTYPE)type introduction:(NSString *)introduction oppo_id:(NSString *)oppo_id;
 @end

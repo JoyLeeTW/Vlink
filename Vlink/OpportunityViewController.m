@@ -15,21 +15,28 @@
 @interface OpportunityViewController ()
 @property (strong, nonatomic) FIRDatabaseReference *idRef;
 @property (strong, nonatomic) FIRDatabaseReference *chanceRef;
-
 @property (strong, nonatomic) NSMutableArray *recommendArray;
 @property (strong, nonatomic) NSMutableArray *timestampArray;
+
+@property (strong, nonatomic) NSString *userType;
 @end
 
 @implementation OpportunityViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.idRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        self.userType = snapshot.value[@"type"];
+    }];
+    
     self.navigationController.navigationBar.topItem.title = @"Vlink";
     self.tabBarController.tabBar.barTintColor = [UIColor colorFromHexString:@"#ffdc35"];
     self.tabBarController.tabBar.tintColor = [UIColor blackColor];
     if (@available(iOS 10.0, *)) {
         self.tabBarController.tabBar.unselectedItemTintColor = [UIColor grayColor];
     }
+    [[UITabBarItem appearance]setTitleTextAttributes:@{@"NSForegroundColorAttributeName": [UIColor blueColor]} forState:UIControlStateNormal] ;
+    
     UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [self.navigationItem setBackBarButtonItem:backButtonItem];
     
@@ -38,20 +45,32 @@
     
     self.recommendArray = [[NSMutableArray alloc] init];
     self.timestampArray = [[NSMutableArray alloc] init];
-
-    // get user value
+    
     self.idRef = [[[[FIRDatabase database] reference] child:@"userData"] child:[FIRAuth auth].currentUser.uid];
+    self.chanceRef = [[[FIRDatabase database] reference] child:@"opportunity"];
+    
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self loadDataFromDB:^{}];
+}
+
+
+- (void)loadDataFromDB:(void(^)(void))completionHandler {
+
+    // FIRDataEventTypeValue
     [self.idRef observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-        // get chancd data
-        self.chanceRef = [[[FIRDatabase database] reference] child:@"opportunity"];
         FIRDatabaseQuery *query = [[self.chanceRef queryOrderedByChild:@"type"] queryEqualToValue:snapshot.value[@"type"]];
-        [query observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        [query observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+            [self.recommendArray removeAllObjects];
             NSDictionary *dict = snapshot.value;
             for(NSString *key in dict.allKeys){
-                Opportunity *opportunity = [Opportunity setWithTitle:dict[key][@"title"] organization:dict[key][@"organization"] startTime:dict[key][@"startTime"] endTime:dict[key][@"location"] location:dict[key][@"location"] amount:dict[key][@"amount"] remaining:dict[key][@"remaining"] type:[dict[key][@"type"] integerValue] introduction:dict[key][@"introduction"]];
+                Opportunity *opportunity = [Opportunity setWithTitle:dict[key][@"title"] organization:dict[key][@"organization"] startTime:dict[key][@"startTime"] endTime:dict[key][@"location"] location:dict[key][@"location"] amount:dict[key][@"amount"] remaining:dict[key][@"remaining"] type:[dict[key][@"type"] integerValue] introduction:dict[key][@"introduction"] oppo_id:key];
                 [self.recommendArray addObject:opportunity];
             }
             [self.OpportunitytableView reloadData];
+            NSLog(@"**L** recommendArray [%@] *****", self.recommendArray);
         }];
 
     } withCancelBlock:^(NSError * _Nonnull error) {
@@ -59,24 +78,22 @@
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 # pragma mark - UITableViewDataSource
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    NSLog(@"**T** recommendArray [%@] *****", self.recommendArray);
+    
     static NSString *cellIdentifier = @"cell";
     OpportunityCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.categoryView.layer.cornerRadius = 10;
     cell.categoryView.layer.masksToBounds = true;
-    cell.categoryView.backgroundColor = [UIColor whiteColor]; //[UIColor colorFromHexString:@"#ffdc35"];
+    cell.categoryView.backgroundColor = [UIColor colorFromHexString:@"#ffdc35"];
+    
+    cell.organizationLabel.numberOfLines = 0;
     
     if(indexPath.section == 0){
-        cell.backgroundColor = [UIColor colorFromHexString:@"#fffefa"];
         Opportunity *oppo = self.recommendArray[indexPath.row];
         cell.titleLabel.text = oppo.title;
         cell.organizationLabel.text = oppo.organization;
@@ -87,17 +104,18 @@
         NSString *typeName;
         switch (oppo.type) {
             case OPPORTUNITYTYPE_OUT_COM:
-                typeName = @"戶外陪伴類";
+                typeName = @"戶外活動類";
                 break;
             case OPPORTUNITYTYPE_IN_COM:
                 typeName = @"關懷陪伴類";
                 break;
             case OPPORTUNITYTYPE_OUT_ALN:
-                typeName = @"綠色環保類";
-                break;
-            case OPPORTUNITYTYPE_IN_ALN:
                 typeName = @"行政/藝術類";
                 break;
+            case OPPORTUNITYTYPE_IN_ALN:
+                typeName = @"綠色環保類";
+                break;
+                
         }
         cell.categoryLabel.text = typeName;
     }
@@ -136,6 +154,8 @@
     NSIndexPath *indexPath = [self.OpportunitytableView indexPathForSelectedRow];
     OpportunityDetailViewController *vc = [segue destinationViewController];
     [vc setOppo:self.recommendArray[indexPath.row]];
+    [vc setRef:self.chanceRef];
 }
+
 
 @end

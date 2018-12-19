@@ -10,7 +10,7 @@
 
 @implementation Opportunity
 
-+ (Opportunity *)setWithTitle:(NSString *)title organization:(NSString *)organization startTime:(NSString *)startTime endTime:(NSString *)endTime location:(NSString *)location amount:(NSString *)amount remaining:(NSString *)remaining type:(OPPORTUNITYTYPE)type introduction:(NSString *)introduction{
++ (Opportunity *)setWithTitle:(NSString *)title organization:(NSString *)organization startTime:(NSString *)startTime endTime:(NSString *)endTime location:(NSString *)location amount:(NSString *)amount remaining:(NSString *)remaining type:(OPPORTUNITYTYPE)type introduction:(NSString *)introduction oppo_id:(NSString *)oppo_id{
     Opportunity *opportunity = [[Opportunity alloc] init];
     opportunity.title = title;
     opportunity.organization = organization;
@@ -21,6 +21,7 @@
     opportunity.remaining = remaining;
     opportunity.type = type;
     opportunity.introduction = introduction;
+    opportunity.oppo_id = oppo_id;
     return opportunity;
 }
 

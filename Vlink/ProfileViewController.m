@@ -12,13 +12,6 @@
 #import "WebViewController.h"
 @import Firebase;
 
-//typedef NS_ENUM(NSUInteger, UICATEGORYTYPE){
-//    UICATEGORYTYPEOUTDOOR,   // 戶外活動類
-//    UICATEGORYTYPEACCOMPANY, // 關懷陪伴類
-//    UICATEGORYTYPECECOLOGY,  // 綠色環保類
-//    UICATEGORYTYPEART        // 行政/藝術類
-//};
-
 @interface ProfileViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *testButton;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -36,7 +29,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    categoryArray = @[@"戶外活動類", @"關懷陪伴類", @"綠色環保類", @"行政/藝術類"];
+    
+    [[UITabBarItem appearance]setTitleTextAttributes:@{@"NSForegroundColorAttributeName": [UIColor blueColor]} forState:UIControlStateNormal] ;
+    
+    categoryArray = @[@"戶外活動類", @"關懷陪伴類", @"行政/藝術類", @"綠色環保類"];
     self.navigationItem.title = @"Vlink";
     
     self.ref = [[FIRDatabase database] reference];
@@ -49,9 +45,13 @@
     self.logoutButton.layer.cornerRadius = 10.f;
     self.logoutButton.layer.masksToBounds = YES;
     
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
     NSString *userID = [FIRAuth auth].currentUser.uid;
     NSLog(@"***** userID [%@] ******", userID);
-    [[[self.ref child:@"userData"] child:userID] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+    [[[self.ref child:@"userData"] child:userID] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         // Get user value
         NSLog(@"***** [%@] *****", snapshot);
         self.nameLabel.text = snapshot.value[@"name"];
@@ -60,12 +60,10 @@
         if(categoryTypeString){
             self.catagoryLabel.text = self->categoryArray[[categoryTypeString intValue]];
         }
-
+        
     } withCancelBlock:^(NSError * _Nonnull error) {
         NSLog(@"%@", error.localizedDescription);
     }];
-    
-
 }
 
 #pragma mark - IBAction
@@ -76,8 +74,10 @@
     // 開問卷
     WebViewController *formWebViewController = [[WebViewController alloc] init];
     formWebViewController.navigationBarTitle = @"人格特質問卷";
-    formWebViewController.urlString = @"https://docs.google.com/forms/d/e/1FAIpQLSdXPWlzDuehJaRispEujtTa8GTDCPoV1lPHsy7cKxgLmIRyUQ/viewform";
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:formWebViewController];[self presentViewController:navVC animated:YES completion:^{}];
+    NSString *urlString = [NSString stringWithFormat:@"https://docs.google.com/forms/d/e/1FAIpQLSdXPWlzDuehJaRispEujtTa8GTDCPoV1lPHsy7cKxgLmIRyUQ/viewform?usp=pp_url&entry.1672938002=%@",userID];
+    formWebViewController.urlString = urlString;
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:formWebViewController];
+    [self presentViewController:navVC animated:YES completion:^{}];
 }
 
 - (IBAction)logout:(id)sender {
